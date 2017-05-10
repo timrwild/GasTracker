@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "118529473164",
+    "firebase_url": "https://gastracker-c383d.firebaseio.com",
+    "project_id": "gastracker-c383d",
+    "storage_bucket": "gastracker-c383d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118529473164:android:c7ab156fc32f3987",
+        "android_client_info": {
+          "package_name": "com.twild.gastracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118529473164-qq51pe5rpddna0da5acljk8knplqjqbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.twild.gastracker",
+            "certificate_hash": "ef9d5c95dc4164ff76cfef027925c376ae7c181c"
+          }
+        },
+        {
+          "client_id": "118529473164-vue68eae625t83sobp5jfsct2ae91agp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWl7XWkWIHMSTchngzBnIf_IVoi1lD5GM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118529473164-vue68eae625t83sobp5jfsct2ae91agp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
