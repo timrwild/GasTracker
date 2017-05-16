@@ -4,4 +4,6 @@
     <string name="text_hint_email">Email</string>
     <string name="text_hint_password">Password</string>
     <string name="text_string_button_sign_in">Sign In</string>
+    <string name="button_add_car_text">Add Car</string>
+    <string name="button_logout_text">Logout</string>
 </resources>
