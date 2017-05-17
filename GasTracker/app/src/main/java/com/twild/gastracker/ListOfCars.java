@@ -47,7 +47,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
     static List<Car> carList;
     public List<CarInfo> carInfoList;
 
-    private DatabaseReference databaseReference;
+    static DatabaseReference databaseReference;
     static FirebaseDatabase firebaseDatabase;
 
     ArrayList<Car> arrayListCarsID = new ArrayList<>();
@@ -181,8 +181,9 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
-                    carList.remove(contextMenuVehiclePosition);
 
+                    carList.remove(contextMenuVehiclePosition);
+                    databaseReference.child(userID).setValue(carList);
                     dialog.dismiss();
 
                 }

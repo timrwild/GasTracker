@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.twild.gastracker.ListOfCars.carList;
+import static com.twild.gastracker.ListOfCars.databaseReference;
 import static com.twild.gastracker.ListOfCars.firebaseDatabase;
 import static com.twild.gastracker.ListOfCars.userID;
 
@@ -57,7 +58,6 @@ public class ActivityEditCar extends AppCompatActivity implements View.OnClickLi
             if (editCar())
             {
                 finish();
-                // startActivity(new Intent(ActivityEditCar.this, ListOfCars.class));
             }
         }
     }
@@ -88,9 +88,7 @@ public class ActivityEditCar extends AppCompatActivity implements View.OnClickLi
         {
             carToEdit.setCarInfo(carName, carMake, carModel, carYear);
 
-            Map<String, Object> carToUpdate = new HashMap<>();
-            carToUpdate.put("/" + userID + "/" + carIndex, carToEdit);
-            firebaseDatabase.getReference().updateChildren(carToUpdate);
+            databaseReference.child(userID).setValue(carList);
 
             return true;
         }

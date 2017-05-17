@@ -105,8 +105,8 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
             Car newCar = new Car(carName, carMake, carModel, carYear);
 
             carList.add(newCar);
-            databaseReference.child(userID).push().setValue(newCar);
-
+            databaseReference.child(userID).setValue(carList);
+            
             return true;
         }
 
