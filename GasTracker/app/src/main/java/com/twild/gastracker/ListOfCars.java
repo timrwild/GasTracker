@@ -22,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.firebase.database.FirebaseDatabase.*;
+
 public class ListOfCars extends AppCompatActivity implements View.OnClickListener
 {
 
@@ -55,6 +57,9 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
          * list of cars, create a blank list. After that, initiate the buttons and
          * setup the car list.
          */
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_cars);
 
@@ -106,7 +111,14 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         buttonAddCar.setOnClickListener(this);
     }
 
-    private void moveToVehicleInfo(int i) {
+    private void moveToVehicleInfo(int i)
+    {
+        /*
+        Intent moveToVehicleInfo = new Intent(this, ActivityViewVehicleInfo.class);
+
+        moveToVehicleInfo.putExtra("car_index", i);
+        startActivity(moveToVehicleInfo);
+        */
     }
 
     private void getData()
@@ -125,7 +137,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
             userID = user.getUid();
         }
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = getInstance();
         databaseReference = database.getReference();
         databaseReference.child(userID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -159,6 +171,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
          * Clear the array lists of all car ids, names, and info. After that,
          * iterate through the list of cars and repopulate the array lists.
          */
+
         arrayListCarsID.clear();
         arrayListCarNames.clear();
         arrayListCarInfo.clear();
@@ -186,12 +199,21 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         }
         if (view == buttonAddCar)
         {
-            // startActivity(new Intent.this, AddCar.class);
+            startActivity(new Intent(this, ActivityAddCar.class));
         }
     }
 
     private void signOut()
     {
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(ListOfCars.this, ActivityLoginScreen.class));
+    }
 
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        databaseReference.child(userID).setValue(carList);
     }
 }

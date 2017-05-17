@@ -6,4 +6,9 @@
     <string name="text_string_button_sign_in">Sign In</string>
     <string name="button_add_car_text">Add Car</string>
     <string name="button_logout_text">Logout</string>
+    <string name="text_box_car_make">Make</string>
+    <string name="text_box_car_year">Year</string>
+    <string name="text_box_car_model">Model</string>
+    <string name="text_box_car_name">Name</string>
+    <string name="button_submit_car_text">Add Car</string>
 </resources>
