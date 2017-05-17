@@ -18,6 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:longClickable="true"
         android:layout_above="@+id/button_add_new_car"
         android:id="@+id/car_list" />
 

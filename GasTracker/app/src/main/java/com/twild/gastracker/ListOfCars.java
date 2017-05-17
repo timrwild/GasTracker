@@ -1,10 +1,14 @@
 package com.twild.gastracker;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -27,6 +31,10 @@ import static com.google.firebase.database.FirebaseDatabase.*;
 public class ListOfCars extends AppCompatActivity implements View.OnClickListener
 {
 
+    static boolean databasePersistenceSet = false;
+
+    int contextMenuVehiclePosition;
+
     private Button buttonSignOut;
     private Button buttonAddCar;
 
@@ -40,6 +48,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
     public List<CarInfo> carInfoList;
 
     private DatabaseReference databaseReference;
+    private static FirebaseDatabase firebaseDatabase;
 
     ArrayList<Car> arrayListCarsID = new ArrayList<>();
     ArrayList<String> arrayListCarNames = new ArrayList<>();
@@ -58,7 +67,11 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
          * setup the car list.
          */
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        if (!databasePersistenceSet)
+        {
+            firebaseDatabase.getInstance().setPersistenceEnabled(true);
+            databasePersistenceSet = true;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_cars);
@@ -91,6 +104,8 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         listViewCars = (ListView) findViewById(R.id.car_list);
         listViewCars.setAdapter(listAdapterCars);
 
+        registerForContextMenu(listViewCars);
+
         listViewCars.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -109,6 +124,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         buttonAddCar = (Button) findViewById(R.id.button_add_new_car);
         buttonSignOut.setOnClickListener(this);
         buttonAddCar.setOnClickListener(this);
+
     }
 
     private void moveToVehicleInfo(int i)
@@ -119,6 +135,68 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         moveToVehicleInfo.putExtra("car_index", i);
         startActivity(moveToVehicleInfo);
         */
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
+    {
+
+        Log.d("longPress", "the user longClicked");
+
+        if (view.getId() == R.id.car_list)
+        {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle(arrayListCarNames.get(info.position));
+            menu.add(Menu.NONE, 0, 0, "Edit");
+            menu.add(Menu.NONE, 1, 1, "Delete");
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int menuItemIndex = item.getItemId();
+        contextMenuVehiclePosition = info.position;
+
+        if (menuItemIndex == 0)
+        {
+            Log.d("Context Menu", "Selected Edit");
+            // insert something to edit the car
+        }
+        else if (menuItemIndex == 1)
+        {
+            Log.d("Context Menu", "Selected Delete");
+            AlertDialog.Builder alert = new AlertDialog.Builder(
+                    ListOfCars.this);
+            alert.setTitle("Alert!!");
+            alert.setMessage("Caution! All records from this vehicle will be removed. This cannot be undone.");
+            alert.setPositiveButton("YES", new DialogInterface.OnClickListener()
+            {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    carList.remove(contextMenuVehiclePosition);
+
+                    dialog.dismiss();
+
+                }
+            });
+            alert.setNegativeButton("NO", new DialogInterface.OnClickListener()
+            {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    dialog.dismiss();
+                }
+            });
+
+            alert.show();
+        }
+
+        return true;
     }
 
     private void getData()
@@ -137,8 +215,8 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
             userID = user.getUid();
         }
 
-        FirebaseDatabase database = getInstance();
-        databaseReference = database.getReference();
+        firebaseDatabase = getInstance();
+        databaseReference = firebaseDatabase.getReference();
         databaseReference.child(userID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

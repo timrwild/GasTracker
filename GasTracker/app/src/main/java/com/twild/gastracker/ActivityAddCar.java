@@ -33,7 +33,7 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
 
-        buttonSubmitCar = (Button) findViewById(R.id.button_add_new_car);
+        buttonSubmitCar = (Button) findViewById(R.id.button_submit_car);
         buttonSubmitCar.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -71,13 +71,15 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
     {
         if (view == buttonSubmitCar)
         {
-            addCar();
-            finish();
-            startActivity(new Intent(ActivityAddCar.this, ListOfCars.class));
+            if (addCar())
+            {
+                finish();
+                startActivity(new Intent(ActivityAddCar.this, ListOfCars.class));
+            }
         }
     }
 
-    private void addCar()
+    private boolean addCar()
     {
         EditText editTextCarMake = (EditText) findViewById(R.id.edit_text_add_car_make);
         EditText editTextCarModel = (EditText) findViewById(R.id.edit_text_add_car_model);
@@ -104,7 +106,12 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
 
             carList.add(newCar);
             databaseReference.child(userID).push().setValue(newCar);
+
+            return true;
         }
+
+        return false;
+
     }
 
 }
