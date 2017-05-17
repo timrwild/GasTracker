@@ -42,13 +42,13 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
 
     FirebaseUser user;
 
-    private String userID;
+    static String userID;
 
     static List<Car> carList;
     public List<CarInfo> carInfoList;
 
     private DatabaseReference databaseReference;
-    private static FirebaseDatabase firebaseDatabase;
+    static FirebaseDatabase firebaseDatabase;
 
     ArrayList<Car> arrayListCarsID = new ArrayList<>();
     ArrayList<String> arrayListCarNames = new ArrayList<>();
@@ -162,7 +162,11 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         if (menuItemIndex == 0)
         {
             Log.d("Context Menu", "Selected Edit");
-            // insert something to edit the car
+            Intent editCar = new Intent(this, ActivityEditCar.class);
+            editCar.putExtra("car_index", contextMenuVehiclePosition);
+
+            startActivity(editCar);
+
         }
         else if (menuItemIndex == 1)
         {

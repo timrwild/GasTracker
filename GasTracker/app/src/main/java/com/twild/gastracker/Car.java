@@ -60,4 +60,12 @@ public class Car
         return carInfo;
     }
 
+    public void setCarInfo(String name, String make, String model, String year)
+    {
+        carInfo.setName(name);
+        carInfo.setMake(make);
+        carInfo.setModel(model);
+        carInfo.setYear(year);
+    }
+
 }

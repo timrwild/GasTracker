@@ -11,4 +11,5 @@
     <string name="text_box_car_model">Model</string>
     <string name="text_box_car_name">Name</string>
     <string name="button_submit_car_text">Add Car</string>
+    <string name="button_edit_car_text">Confirm</string>
 </resources>
