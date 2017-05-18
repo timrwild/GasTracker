@@ -28,7 +28,7 @@ import java.util.List;
 
 import static com.google.firebase.database.FirebaseDatabase.*;
 
-public class ListOfCars extends AppCompatActivity implements View.OnClickListener
+public class ActivityListOfCars extends AppCompatActivity implements View.OnClickListener
 {
 
     static boolean databasePersistenceSet = false;
@@ -98,6 +98,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
          * we can receive the index on that list so that we can send that car forward
          * to the next window.
          */
+
         setContentView(R.layout.activity_list_of_cars);
 
         listAdapterCars = new AdapterCarList(this, arrayListCarNames, arrayListCarInfo);
@@ -129,12 +130,12 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
 
     private void moveToVehicleInfo(int i)
     {
-        /*
-        Intent moveToVehicleInfo = new Intent(this, ActivityViewVehicleInfo.class);
+
+        Intent moveToVehicleInfo = new Intent(this, ActivityViewCarRecords.class);
 
         moveToVehicleInfo.putExtra("car_index", i);
         startActivity(moveToVehicleInfo);
-        */
+
     }
 
     @Override
@@ -172,7 +173,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
         {
             Log.d("Context Menu", "Selected Delete");
             AlertDialog.Builder alert = new AlertDialog.Builder(
-                    ListOfCars.this);
+                    ActivityListOfCars.this);
             alert.setTitle("Alert!!");
             alert.setMessage("Caution! All records from this vehicle will be removed. This cannot be undone.");
             alert.setPositiveButton("YES", new DialogInterface.OnClickListener()
@@ -290,7 +291,7 @@ public class ListOfCars extends AppCompatActivity implements View.OnClickListene
     {
         firebaseAuth.signOut();
         finish();
-        startActivity(new Intent(ListOfCars.this, ActivityLoginScreen.class));
+        startActivity(new Intent(ActivityListOfCars.this, ActivityLoginScreen.class));
     }
 
     @Override

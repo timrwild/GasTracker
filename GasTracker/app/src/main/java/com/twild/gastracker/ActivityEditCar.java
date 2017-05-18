@@ -8,13 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.twild.gastracker.ListOfCars.carList;
-import static com.twild.gastracker.ListOfCars.databaseReference;
-import static com.twild.gastracker.ListOfCars.firebaseDatabase;
-import static com.twild.gastracker.ListOfCars.userID;
+import static com.twild.gastracker.ActivityListOfCars.carList;
+import static com.twild.gastracker.ActivityListOfCars.databaseReference;
+import static com.twild.gastracker.ActivityListOfCars.userID;
 
 public class ActivityEditCar extends AppCompatActivity implements View.OnClickListener {
 

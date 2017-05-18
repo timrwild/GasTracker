@@ -95,7 +95,7 @@ public class ActivityLoginScreen extends AppCompatActivity implements View.OnCli
                      * we can go to the next screen
                      */
                     finish();
-                    startActivity(new Intent(ActivityLoginScreen.this, ListOfCars.class));
+                    startActivity(new Intent(ActivityLoginScreen.this, ActivityListOfCars.class));
                 }
                 else
                 {

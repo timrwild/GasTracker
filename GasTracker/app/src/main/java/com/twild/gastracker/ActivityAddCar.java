@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static com.twild.gastracker.ListOfCars.carList;
+import static com.twild.gastracker.ActivityListOfCars.carList;
 
 public class ActivityAddCar extends AppCompatActivity implements View.OnClickListener {
 
@@ -74,7 +74,7 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
             if (addCar())
             {
                 finish();
-                startActivity(new Intent(ActivityAddCar.this, ListOfCars.class));
+                startActivity(new Intent(ActivityAddCar.this, ActivityListOfCars.class));
             }
         }
     }
@@ -103,6 +103,9 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
         else
         {
             Car newCar = new Car(carName, carMake, carModel, carYear);
+
+            newCar.addFillup(1, 1, 2000, 180000, 3.567, 2.359, 1);
+            newCar.addFillup(1, 2, 2000, 180400, 12.345, 2.359, 1);
 
             carList.add(newCar);
             databaseReference.child(userID).setValue(carList);

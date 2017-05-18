@@ -15,9 +15,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListOfCars" />
+        <activity android:name=".ActivityListOfCars" />
         <activity android:name=".ActivityAddCar" />
-        <activity android:name=".ActivityEditCar"></activity>
+        <activity android:name=".ActivityEditCar" />
+        <activity
+            android:name=".ActivityViewCarRecords"
+            android:label="@string/title_activity_view_car_records"
+            android:parentActivityName=".ActivityListOfCars"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.twild.gastracker.ActivityListOfCars" />
+        </activity>
     </application>
 
 </manifest>
