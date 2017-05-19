@@ -74,7 +74,7 @@ public class ActivityAddCar extends AppCompatActivity implements View.OnClickLis
             if (addCar())
             {
                 finish();
-                startActivity(new Intent(ActivityAddCar.this, ActivityListOfCars.class));
+                // startActivity(new Intent(ActivityAddCar.this, ActivityListOfCars.class));
             }
         }
     }

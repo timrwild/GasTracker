@@ -3,9 +3,14 @@ package com.twild.gastracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -17,7 +22,7 @@ import java.util.Locale;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
 
-public class FragmentEfficiencyInfo extends Fragment
+public class FragmentFillupInfo extends Fragment
 {
 
     /*
@@ -42,12 +47,15 @@ public class FragmentEfficiencyInfo extends Fragment
     ArrayList<String> fillupPrice = new ArrayList<>();
     ArrayList<String> fillupMPG = new ArrayList<>();
 
-    ListAdapter carEfficiencyAdapter;
-    ListView carEfficiencyList;
+    ListAdapter listAdapterFillup;
+    ListView listViewFillup;
 
     Button buttonAddFillup;
 
-    public static FragmentEfficiencyInfo newInstance(int currentCar)
+    int contextMenuFillupPosition;
+
+
+    public static FragmentFillupInfo newInstance(int currentCar)
     {
 
         /*
@@ -63,13 +71,13 @@ public class FragmentEfficiencyInfo extends Fragment
          * get information from the actual activity to this fragment.
          */
 
-        FragmentEfficiencyInfo fragmentEfficiencyInfo = new FragmentEfficiencyInfo();
+        FragmentFillupInfo fragmentFillupInfo = new FragmentFillupInfo();
         Bundle bundleEfficiencyInfo = new Bundle();
         bundleEfficiencyInfo.putInt("current_car", currentCar);
 
-        fragmentEfficiencyInfo.setArguments(bundleEfficiencyInfo);
+        fragmentFillupInfo.setArguments(bundleEfficiencyInfo);
 
-        return fragmentEfficiencyInfo;
+        return fragmentFillupInfo;
     }
 
 
@@ -86,7 +94,7 @@ public class FragmentEfficiencyInfo extends Fragment
          * to display.
          */
 
-        View viewEfficiencyInfo = inflater.inflate(R.layout.layout_fragment_fillup_info, container, false);
+        View viewFillupInfo = inflater.inflate(R.layout.layout_fragment_fillup_info, container, false);
 
         currentCarIndex = getArguments().getInt("current_car", 0);
         currentCar = carList.get(currentCarIndex);
@@ -101,7 +109,7 @@ public class FragmentEfficiencyInfo extends Fragment
 
         populateLists();
 
-        buttonAddFillup = (Button) viewEfficiencyInfo.findViewById(R.id.button_add_fillup);
+        buttonAddFillup = (Button) viewFillupInfo.findViewById(R.id.button_add_fillup);
 
         buttonAddFillup.setOnClickListener(new View.OnClickListener()
         {
@@ -122,18 +130,23 @@ public class FragmentEfficiencyInfo extends Fragment
          * return the fully constructed view.
          */
 
-        carEfficiencyAdapter = new AdapterFillupList(super.getContext(), R.layout.adapter_fillup_info, fillupDate, fillupMileage, fillupAmount,
+        listAdapterFillup = new AdapterFillupList(super.getContext(), R.layout.adapter_fillup_info, fillupDate, fillupMileage, fillupAmount,
                 fillupFull, fillupPrice, fillupMPG);
-        carEfficiencyList = (ListView) viewEfficiencyInfo.findViewById(R.id.fillup_list_view);
-        carEfficiencyList.setAdapter(carEfficiencyAdapter);
+        listViewFillup = (ListView) viewFillupInfo.findViewById(R.id.fillup_list_view);
+        listViewFillup.setAdapter(listAdapterFillup);
 
 
-        return viewEfficiencyInfo;
+        registerForContextMenu(listViewFillup);
+
+
+        return viewFillupInfo;
     }
 
     private void moveToAddFillup()
     {
         Intent moveToAddFillup = new Intent(super.getContext(), ActivityAddFillup.class);
+        moveToAddFillup.putExtra("car_index", currentCarIndex);
+        getActivity().finish();
         startActivity(moveToAddFillup);
     }
 
@@ -190,5 +203,54 @@ public class FragmentEfficiencyInfo extends Fragment
             }
         }
     }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
+    {
+
+        Log.d("longPress", "the user longClicked");
+
+        if (view.getId() == R.id.fillup_list_view)
+        {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle(fillupDate.get(info.position) + " " + fillupAmount.get(info.position));
+            menu.add(Menu.NONE, 0, 0, "Edit");
+            menu.add(Menu.NONE, 1, 1, "Delete");
+        }
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int menuItemIndex = item.getItemId();
+        contextMenuFillupPosition = info.position;
+
+        if (menuItemIndex == 0)
+        {
+            Log.d("Context Menu", "Selected Edit");
+            Intent editFillup = new Intent(getActivity(), ActivityEditFillup.class);
+            editFillup.putExtra("car_index", currentCarIndex);
+            editFillup.putExtra("fillup_index", contextMenuFillupPosition);
+
+            startActivity(editFillup);
+
+        }
+        else if (menuItemIndex == 1)
+        {
+            Log.d("Context Menu", "Selected Delete");
+            carList.get(currentCarIndex).fillUpList.remove(contextMenuFillupPosition);
+
+            populateLists();
+
+            listViewFillup.setAdapter(listAdapterFillup);
+
+        }
+
+        return true;
+    }
+
 
 }

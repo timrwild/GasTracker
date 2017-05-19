@@ -22,4 +22,23 @@
     <string name="text_box_mileage_view_price">Price</string>
     <string name="text_box_mileage_view_mpg">MPG</string>
     <string name="add_gas_record_button_text">Add Entry</string>
+    <string name="text_box_date">Date</string>
+    <string name="text_box_add_fillup_date">Date:</string>
+    <string name="text_box_add_fillup_mileage">Mileage:</string>
+    <string name="text_box_add_fillup_gallons">Gallons:</string>
+    <string name="text_box_add_fillup_full">Full:</string>
+    <string name="text_box_add_fillup_price">Price:</string>
+    <string name="button_submit_fillup_text">Add Entry</string>
+    <string name="edit_text_add_fillup_hint_amount">Gallons</string>
+    <string name="edit_text_add_fillup_hint_mileage">Mileage</string>
+    <string name="edit_text_add_fillup_hint_price">Price</string>
+    <string name="edit_text_edit_fillup_hint_price">Price</string>
+    <string name="edit_text_edit_fillup_hint_amount">Amount</string>
+    <string name="edit_text_edit_fillup_hint_mileage">Mileage</string>
+    <string name="text_box_edit_fillup_price">Price:</string>
+    <string name="text_box_edit_fillup_full">Full:</string>
+    <string name="text_box_edit_fillup_gallons">Gallons:</string>
+    <string name="text_box_edit_fillup_mileage">Mileage:</string>
+    <string name="text_box_edit_fillup_date">Date</string>
+    <string name="button_edit_fillup_text">Edit Entry</string>
 </resources>

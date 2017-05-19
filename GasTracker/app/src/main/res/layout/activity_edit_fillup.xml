@@ -29,57 +29,57 @@
             android:weightSum="1.25">
 
             <TextView
-                android:text="@string/text_box_add_fillup_date"
+                android:text="@string/text_box_edit_fillup_date"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_fillup_date"
+                android:id="@+id/text_box_edit_fillup_date"
                 android:layout_weight="0.25"
                 android:paddingRight="7dp"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
             <TextView
-                android:text="@string/text_box_add_fillup_mileage"
+                android:text="@string/text_box_edit_fillup_mileage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_fillup_mileage"
+                android:id="@+id/text_box_edit_fillup_mileage"
                 android:paddingRight="7dp"
                 android:layout_weight="0.25"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
             <TextView
-                android:text="@string/text_box_add_fillup_gallons"
+                android:text="@string/text_box_edit_fillup_gallons"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_fillup_gallons"
+                android:id="@+id/text_box_edit_fillup_gallons"
                 android:ems="10"
                 android:paddingRight="7dp"
                 android:layout_weight="0.25"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
             <TextView
-                android:text="@string/text_box_add_fillup_full"
+                android:text="@string/text_box_edit_fillup_full"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_fillup_full"
+                android:id="@+id/text_box_edit_fillup_full"
                 android:paddingRight="7dp"
                 android:layout_weight="0.25"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
             <TextView
-                android:text="@string/text_box_add_fillup_price"
+                android:text="@string/text_box_edit_fillup_price"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_fillup_price"
+                android:id="@+id/text_box_edit_fillup_price"
                 android:paddingRight="7dp"
                 android:layout_weight="0.25"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
@@ -99,7 +99,7 @@
                 android:layout_height="0dp"
                 android:focusable="false"
                 android:ems="5"
-                android:id="@+id/edit_text_add_fillup_date"
+                android:id="@+id/edit_text_edit_fillup_date"
                 android:layout_weight="0.25"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
@@ -108,23 +108,23 @@
                 android:layout_height="0dp"
                 android:inputType="number"
                 android:ems="4"
-                android:id="@+id/edit_text_add_fillup_mileage"
+                android:id="@+id/edit_text_edit_fillup_mileage"
                 android:layout_weight="0.25"
-                android:hint="@string/edit_text_add_fillup_hint_mileage"
+                android:hint="@string/edit_text_edit_fillup_hint_mileage"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:ems="4"
-                android:id="@+id/edit_text_add_fillup_amount"
+                android:id="@+id/edit_text_edit_fillup_amount"
                 android:layout_weight="0.25"
                 android:inputType="numberDecimal"
-                android:hint="@string/edit_text_add_fillup_hint_amount"
+                android:hint="@string/edit_text_edit_fillup_hint_amount"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
             <CheckBox
-                android:id="@+id/checkbox_add_fillup_full"
+                android:id="@+id/checkbox_edit_fillup_full"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="0.25"
@@ -136,9 +136,9 @@
                 android:layout_height="0dp"
                 android:inputType="numberDecimal"
                 android:ems="4"
-                android:id="@+id/edit_text_add_fillup_price"
+                android:id="@+id/edit_text_edit_fillup_price"
                 android:layout_weight="0.25"
-                android:hint="@string/edit_text_add_fillup_hint_price"
+                android:hint="@string/edit_text_edit_fillup_hint_price"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         </LinearLayout>
@@ -152,10 +152,10 @@
         android:layout_weight="0.4">
 
         <Button
-            android:text="@string/button_submit_fillup_text"
+            android:text="@string/button_edit_fillup_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_submit_fillup"
+            android:id="@+id/button_edit_fillup"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

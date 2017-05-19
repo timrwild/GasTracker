@@ -7,7 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.widget.ListAdapter;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.widget.AdapterView;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
 
@@ -44,7 +49,7 @@ public class ActivityViewCarRecords extends FragmentActivity
             switch(pos)
             {
 
-                case 0: return FragmentEfficiencyInfo.newInstance(currentCarPosition);
+                case 0: return FragmentFillupInfo.newInstance(currentCarPosition);
                 case 1: return SecondFragment.newInstance(currentCarPosition);
                 case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
                 case 3: return ThirdFragment.newInstance("ThirdFragment, Instance 2");
@@ -59,5 +64,26 @@ public class ActivityViewCarRecords extends FragmentActivity
             return 5;
         }
     }
+
+    /*
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
+    {
+
+        Log.d("longPress", "the user longClicked");
+
+        if (view.getId() == R.id.fillup_list_view)
+        {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle("Edit Info");
+            menu.add(Menu.NONE, 0, 0, "Edit");
+            menu.add(Menu.NONE, 1, 1, "Delete");
+
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu_activity_view_car_records, menu);
+        }
+    }
+
+    */
 }
 
