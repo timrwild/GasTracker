@@ -1,10 +1,9 @@
 package com.twild.gastracker;
 
-/**
- * Created by timwildauer on 1/31/17.
- */
+import android.support.annotation.NonNull;
 
-public class Record
+
+public class Record implements Comparable<Record>
 {
     public int day, month, year, mileage;
 
@@ -54,4 +53,8 @@ public class Record
         this.mileage = mileage;
     }
 
+    @Override
+    public int compareTo(@NonNull Record o) {
+        return getMileage() - o.getMileage();
+    }
 }

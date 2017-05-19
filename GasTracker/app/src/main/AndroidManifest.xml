@@ -27,6 +27,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.twild.gastracker.ActivityListOfCars" />
         </activity>
+        <activity android:name=".ActivityAddFillup"></activity>
     </application>
 
 </manifest>
