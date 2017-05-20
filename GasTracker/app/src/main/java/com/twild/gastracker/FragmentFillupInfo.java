@@ -178,7 +178,7 @@ public class FragmentFillupInfo extends Fragment
             for (Fillup fillup : currentCarFillup) {
 
                 int tempDateDay = fillup.getDay();
-                int tempDateMonth = fillup.getMonth();
+                int tempDateMonth = fillup.getMonth() + 1;
                 int tempDateYear = fillup.getYear();
 
                 int tempMileage = fillup.getMileage();

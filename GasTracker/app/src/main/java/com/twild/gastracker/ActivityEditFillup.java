@@ -66,6 +66,8 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         month = editedFillup.getMonth();
         day = editedFillup.getDay();
 
+        int displayMonth = month + 1;
+
         mileage = editedFillup.getMileage();
         amount = editedFillup.getAmount();
         price = editedFillup.getPrice();
@@ -80,7 +82,7 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         String stringMileage = Integer.toString(mileage);
         String stringAmount = Double.toString(amount);
         String stringPrice = Double.toString(price);
-        editTextDate.setText(month + "/" + day + "/" + year);
+        editTextDate.setText(displayMonth + "/" + day + "/" + year);
         editTextMileage.setText(stringMileage);
         editTextAmount.setText(stringAmount);
         editTextPrice.setText(stringPrice);
@@ -176,7 +178,8 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         this.month = month;
         this.day = dayOfMonth;
 
-        editTextDate.setText(this.month + "/" + this.day + "/" + this.year);
+        int displayMonth = this.month + 1;
+        editTextDate.setText(displayMonth + "/" + this.day + "/" + this.year);
 
     }
 }

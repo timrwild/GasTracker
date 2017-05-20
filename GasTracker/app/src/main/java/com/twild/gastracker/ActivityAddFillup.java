@@ -104,7 +104,8 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
 
     private void setDateText()
     {
-        editTextDate.setText(month + "/" + day + "/" + year);
+        int displayMonth = month + 1;
+        editTextDate.setText(displayMonth + "/" + day + "/" + year);
     }
 
     private boolean submitFillup()
