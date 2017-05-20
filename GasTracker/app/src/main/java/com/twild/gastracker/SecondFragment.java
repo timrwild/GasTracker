@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
 
-/**
- * Created by Tim Wildauer on 17-May-17.
- */
 
 public class SecondFragment extends Fragment {
 
@@ -27,7 +24,6 @@ public class SecondFragment extends Fragment {
         currentCarIndex = getArguments().getInt("current_car", 0);
         currentCar = carList.get(currentCarIndex);
 
-        Toast.makeText(super.getContext(), "current_car " + currentCar.getCarInfo().getName() + " maintenance", Toast.LENGTH_SHORT).show();
 
         return v;
     }

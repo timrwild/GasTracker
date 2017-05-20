@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
+import static com.twild.gastracker.ActivityListOfCars.databaseReference;
+import static com.twild.gastracker.ActivityListOfCars.userID;
 
 public class FragmentFillupInfo extends Fragment
 {
@@ -38,6 +40,7 @@ public class FragmentFillupInfo extends Fragment
 
     Car currentCar;
     int currentCarIndex;
+    List<Fillup> fillupList;
 
     List<Fillup> currentCarFillup;
     ArrayList<String> fillupDate = new ArrayList<>();
@@ -98,6 +101,7 @@ public class FragmentFillupInfo extends Fragment
 
         currentCarIndex = getArguments().getInt("current_car", 0);
         currentCar = carList.get(currentCarIndex);
+        fillupList = currentCar.getFillUpList();
 
         /*
          * Once we have that car (note that we're just copying it to this fragment, not editing
@@ -146,8 +150,8 @@ public class FragmentFillupInfo extends Fragment
     {
         Intent moveToAddFillup = new Intent(super.getContext(), ActivityAddFillup.class);
         moveToAddFillup.putExtra("car_index", currentCarIndex);
-        getActivity().finish();
         startActivity(moveToAddFillup);
+        getActivity().finish();
     }
 
     private void populateLists()
@@ -194,9 +198,10 @@ public class FragmentFillupInfo extends Fragment
                     mileagePrevious = tempMileage;
                 }
 
-                fillupDate.add(tempDateMonth + "/" + tempDateDay + "/" + tempDateYear);
+                String stringYearSubstring = Integer.toString(tempDateYear).substring(2);
+                fillupDate.add(tempDateMonth + "/" + tempDateDay + "/" + stringYearSubstring);
                 fillupMileage.add(NumberFormat.getNumberInstance(Locale.US).format(fillup.getMileage()));
-                fillupAmount.add(String.valueOf(fillup.getAmount()));
+                fillupAmount.add(String.format("%.3f", fillup.getAmount()));
                 fillupFull.add(String.valueOf(fillup.getFull()));
                 fillupPrice.add(String.valueOf(fillup.getPrice()));
                 fillupMPG.add(String.format("%.2f", tempMPG));
@@ -234,7 +239,7 @@ public class FragmentFillupInfo extends Fragment
             Intent editFillup = new Intent(getActivity(), ActivityEditFillup.class);
             editFillup.putExtra("car_index", currentCarIndex);
             editFillup.putExtra("fillup_index", contextMenuFillupPosition);
-
+            getActivity().finish();
             startActivity(editFillup);
 
         }
@@ -243,6 +248,7 @@ public class FragmentFillupInfo extends Fragment
             Log.d("Context Menu", "Selected Delete");
             carList.get(currentCarIndex).fillUpList.remove(contextMenuFillupPosition);
 
+            databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
             populateLists();
 
             listViewFillup.setAdapter(listAdapterFillup);

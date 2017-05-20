@@ -21,6 +21,7 @@ public class ActivityViewCarRecords extends FragmentActivity
 
     Car currentCar;
     int currentCarPosition;
+    int currentPageIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,10 +30,12 @@ public class ActivityViewCarRecords extends FragmentActivity
         setContentView(R.layout.activity_view_car_records);
 
         currentCarPosition = getIntent().getIntExtra("car_index", 0);
+        currentPageIndex = getIntent().getIntExtra("page_index", 0);
         currentCar = carList.get(currentCarPosition);
 
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        pager.setCurrentItem(currentPageIndex);
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter
@@ -52,8 +55,6 @@ public class ActivityViewCarRecords extends FragmentActivity
                 case 0: return FragmentFillupInfo.newInstance(currentCarPosition);
                 case 1: return SecondFragment.newInstance(currentCarPosition);
                 case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
-                case 3: return ThirdFragment.newInstance("ThirdFragment, Instance 2");
-                case 4: return ThirdFragment.newInstance("ThirdFragment, Instance 3");
                 default: return ThirdFragment.newInstance("ThirdFragment, Default");
             }
         }
@@ -61,29 +62,9 @@ public class ActivityViewCarRecords extends FragmentActivity
         @Override
         public int getCount()
         {
-            return 5;
+            return 3;
         }
     }
 
-    /*
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo)
-    {
-
-        Log.d("longPress", "the user longClicked");
-
-        if (view.getId() == R.id.fillup_list_view)
-        {
-            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-            menu.setHeaderTitle("Edit Info");
-            menu.add(Menu.NONE, 0, 0, "Edit");
-            menu.add(Menu.NONE, 1, 1, "Delete");
-
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu_activity_view_car_records, menu);
-        }
-    }
-
-    */
 }
 

@@ -39,6 +39,6 @@
     <string name="text_box_edit_fillup_full">Full:</string>
     <string name="text_box_edit_fillup_gallons">Gallons:</string>
     <string name="text_box_edit_fillup_mileage">Mileage:</string>
-    <string name="text_box_edit_fillup_date">Date</string>
+    <string name="text_box_edit_fillup_date">Date:</string>
     <string name="button_edit_fillup_text">Edit Entry</string>
 </resources>

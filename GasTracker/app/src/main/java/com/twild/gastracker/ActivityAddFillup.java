@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.List;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
 
@@ -36,6 +37,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
     int day;
 
     int currentCarIndex;
+    List<Fillup> fillupList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,6 +45,8 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
         currentCarIndex = getIntent().getIntExtra("car_index", 0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fillup);
+
+        fillupList = carList.get(currentCarIndex).getFillUpList();
 
         final Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
@@ -61,6 +65,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
                 {
                     Intent returnToViewRecords = new Intent(ActivityAddFillup.this, ActivityViewCarRecords.class);
                     returnToViewRecords.putExtra("car_index", currentCarIndex);
+                    returnToViewRecords.putExtra("page_index", 0);
                     finish();
                     startActivity(returnToViewRecords);
                 }
@@ -143,6 +148,8 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
 
         carList.get(currentCarIndex).addFillup(day, month, year, mileage, amount, price, full);
 
+        databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
+
         return true;
     }
 
@@ -154,14 +161,4 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
         this.day = dayOfMonth;
         setDateText();
     }
-
-    @Override
-    public void onDestroy()
-    {
-        Intent returnToViewRecords = new Intent(ActivityAddFillup.this, ActivityViewCarRecords.class);
-        returnToViewRecords.putExtra("car_index", currentCarIndex);
-        startActivity(returnToViewRecords);
-        finish();
-        super.onDestroy();
-    }
-}
+ }
