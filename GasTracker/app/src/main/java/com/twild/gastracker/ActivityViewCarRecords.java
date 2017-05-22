@@ -7,12 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.AdapterView;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
 
@@ -22,6 +16,8 @@ public class ActivityViewCarRecords extends FragmentActivity
     Car currentCar;
     int currentCarPosition;
     int currentPageIndex;
+
+    static final int DATA_CHANGED = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,7 +47,6 @@ public class ActivityViewCarRecords extends FragmentActivity
         {
             switch(pos)
             {
-
                 case 0: return FragmentFillupInfo.newInstance(currentCarPosition);
                 case 1: return SecondFragment.newInstance(currentCarPosition);
                 case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
@@ -64,6 +59,13 @@ public class ActivityViewCarRecords extends FragmentActivity
         {
             return 3;
         }
+
+        @Override
+        public int getItemPosition(Object item)
+        {
+            return POSITION_NONE;
+        }
+
     }
 
 }

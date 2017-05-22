@@ -50,7 +50,7 @@ public class Record implements Comparable<Record>
         return mileage;
     }
 
-    public void setMileage(int mileage) {
+    public void setMileage(double mileage) {
         this.mileage = mileage;
     }
 

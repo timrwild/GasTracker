@@ -1,9 +1,9 @@
 package com.twild.gastracker;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,44 +11,35 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
+import static com.twild.gastracker.ActivityListOfCars.databaseReference;
+import static com.twild.gastracker.ActivityListOfCars.userID;
+import static com.twild.gastracker.ActivityViewCarRecords.DATA_CHANGED;
 
 public class ActivityEditFillup extends AppCompatActivity implements DatePickerDialog.OnDateSetListener
 {
 
-    private Button buttonEditFillup;
     EditText editTextDate;
     EditText editTextMileage;
     EditText editTextAmount;
     EditText editTextPrice;
     CheckBox checkBoxFull;
 
-    private FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-
-    private DatabaseReference databaseReference;
-    private String userID;
-
     int currentCarIndex;
     int currentFillupIndex;
+    List<Fillup> fillupList;
     Fillup editedFillup;
     int year;
     int month;
+    int displayMonth;
     int day;
     double mileage;
     double amount;
     double price;
     int full;
-
-    List<Fillup> fillupList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,16 +50,18 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         setContentView(R.layout.activity_edit_fillup);
 
         fillupList = carList.get(currentCarIndex).getFillUpList();
-
         editedFillup = fillupList.get(currentFillupIndex);
 
         year = editedFillup.getYear();
         month = editedFillup.getMonth();
         day = editedFillup.getDay();
+        displayMonth = month + 1;
 
-        int displayMonth = month + 1;
+        DecimalFormat decimalFormatMileage = new DecimalFormat();
+        decimalFormatMileage.setDecimalSeparatorAlwaysShown(false);
 
         mileage = editedFillup.getMileage();
+        Log.d("mileage", "" + mileage);
         amount = editedFillup.getAmount();
         price = editedFillup.getPrice();
         full = editedFillup.getFull();
@@ -79,18 +72,15 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         editTextPrice = (EditText) findViewById(R.id.edit_text_edit_fillup_price);
         checkBoxFull = (CheckBox) findViewById(R.id.checkbox_edit_fillup_full);
 
-        String stringMileage = Double.toString(mileage);
         String stringAmount = Double.toString(amount);
         String stringPrice = Double.toString(price);
         editTextDate.setText(displayMonth + "/" + day + "/" + year);
-        editTextMileage.setText(stringMileage);
         editTextAmount.setText(stringAmount);
         editTextPrice.setText(stringPrice);
         checkBoxFull.setChecked(full == 1);
+        editTextMileage.setText(decimalFormatMileage.format(mileage).replace(",", ""));
 
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, ActivityEditFillup.this, year, month, day);
-
-        buttonEditFillup = (Button) findViewById(R.id.button_edit_fillup);
+        Button buttonEditFillup = (Button) findViewById(R.id.button_edit_fillup);
         buttonEditFillup.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -98,14 +88,13 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
             {
                 if (editFillup())
                 {
-                    Intent returnToViewRecords = new Intent(ActivityEditFillup.this, ActivityViewCarRecords.class);
-                    returnToViewRecords.putExtra("car_index", currentCarIndex);
-                    returnToViewRecords.putExtra("page_index", 0);
+                    setResult(DATA_CHANGED);
                     finish();
-                    startActivity(returnToViewRecords);
                 }
             }
         });
+
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, ActivityEditFillup.this, year, month, day);
         editTextDate.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -114,23 +103,6 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
                 datePickerDialog.show();
             }
         });
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        user = firebaseAuth.getCurrentUser();
-
-        if (user != null)
-        {
-            userID = user.getUid();
-        }
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference databaseReference = database.getReference();
-        databaseReference.child(userID);
-
-
     }
 
     private boolean editFillup()
@@ -147,7 +119,7 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
             return false;
         }
 
-        mileage = Integer.parseInt(mileageString);
+        mileage = Double.parseDouble(mileageString);
         amount = Double.parseDouble(amountString);
 
         if (priceString.equals(""))
@@ -158,14 +130,13 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         {
             price = Double.parseDouble(priceString);
         }
-
+        
         if (checkBoxFull.isChecked())
         {
             full = 1;
         }
 
         carList.get(currentCarIndex).editFillup(currentFillupIndex, day, month, year, mileage, amount, price, full);
-
         databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
 
         return true;
@@ -177,9 +148,9 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         this.year = year;
         this.month = month;
         this.day = dayOfMonth;
-
-        int displayMonth = this.month + 1;
+        displayMonth = this.month + 1;
         editTextDate.setText(displayMonth + "/" + this.day + "/" + this.year);
 
     }
+
 }

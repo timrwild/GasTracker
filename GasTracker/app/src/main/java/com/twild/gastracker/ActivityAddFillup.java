@@ -1,7 +1,6 @@
 package com.twild.gastracker;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,24 +19,21 @@ import java.util.Calendar;
 import java.util.List;
 
 import static com.twild.gastracker.ActivityListOfCars.carList;
+import static com.twild.gastracker.ActivityListOfCars.databaseReference;
+import static com.twild.gastracker.ActivityListOfCars.userID;
+import static com.twild.gastracker.ActivityViewCarRecords.DATA_CHANGED;
 
 public class ActivityAddFillup extends AppCompatActivity implements DatePickerDialog.OnDateSetListener
 {
 
-    private Button buttonAddFillup;
-    private EditText editTextDate;
-
-    private FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-
-    private DatabaseReference databaseReference;
-    private String userID;
     int year;
     int month;
     int day;
 
     int currentCarIndex;
     List<Fillup> fillupList;
+
+    EditText editTextDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,10 +48,9 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
-
         final DatePickerDialog datePickerDialog = new DatePickerDialog(this, ActivityAddFillup.this, year, month, day);
 
-        buttonAddFillup = (Button) findViewById(R.id.button_submit_fillup);
+        Button buttonAddFillup = (Button) findViewById(R.id.button_submit_fillup);
         buttonAddFillup.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -63,11 +58,8 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
             {
                 if (submitFillup())
                 {
-                    Intent returnToViewRecords = new Intent(ActivityAddFillup.this, ActivityViewCarRecords.class);
-                    returnToViewRecords.putExtra("car_index", currentCarIndex);
-                    returnToViewRecords.putExtra("page_index", 0);
+                    setResult(DATA_CHANGED);
                     finish();
-                    startActivity(returnToViewRecords);
                 }
             }
         });
@@ -81,24 +73,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
                 datePickerDialog.show();
             }
         });
-
-
         setDateText();
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        user = firebaseAuth.getCurrentUser();
-
-        if (user != null)
-        {
-            userID = user.getUid();
-        }
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference databaseReference = database.getReference();
-        databaseReference.child(userID);
 
     }
 
@@ -148,9 +123,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
         }
 
         carList.get(currentCarIndex).addFillup(day, month, year, mileage, amount, price, full);
-
         databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
-
         return true;
     }
 
@@ -162,4 +135,5 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
         this.day = dayOfMonth;
         setDateText();
     }
- }
+
+}
