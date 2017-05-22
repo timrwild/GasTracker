@@ -1,8 +1,5 @@
 package com.twild.gastracker;
 
-/**
- * Created by timwildauer on 1/31/17.
- */
 
 public class Fillup extends Record
 {
@@ -10,7 +7,7 @@ public class Fillup extends Record
     double price;
     int full;
 
-    public Fillup(int day, int month, int year, int mileage, double amount, double price, int full)
+    public Fillup(int day, int month, int year, double mileage, double amount, double price, int full)
     {
         super(day, month, year, mileage);
         this.amount = amount;

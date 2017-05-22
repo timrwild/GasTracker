@@ -11,7 +11,7 @@
     <string name="text_box_car_model">Model</string>
     <string name="text_box_car_name">Name</string>
     <string name="button_submit_car_text">Add Car</string>
-    <string name="button_edit_car_text">Confirm</string>
+    <string name="button_edit_car_text">Confirm Changes</string>
     <string name="title_activity_view_car_records">ActivityViewCarRecords</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -40,5 +40,5 @@
     <string name="text_box_edit_fillup_gallons">Gallons:</string>
     <string name="text_box_edit_fillup_mileage">Mileage:</string>
     <string name="text_box_edit_fillup_date">Date:</string>
-    <string name="button_edit_fillup_text">Edit Entry</string>
+    <string name="button_edit_fillup_text">Confirm Changes</string>
 </resources>

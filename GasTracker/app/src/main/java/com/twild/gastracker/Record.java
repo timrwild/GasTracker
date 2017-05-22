@@ -5,10 +5,11 @@ import android.support.annotation.NonNull;
 
 public class Record implements Comparable<Record>
 {
-    public int day, month, year, mileage;
+    public int day, month, year;
+    public double mileage;
 
 
-    Record(int day, int month, int year, int mileage)
+    Record(int day, int month, int year, double mileage)
     {
         this.day = day;
         this.month = month;
@@ -45,7 +46,7 @@ public class Record implements Comparable<Record>
         this.year = year;
     }
 
-    public int getMileage() {
+    public double getMileage() {
         return mileage;
     }
 
@@ -55,6 +56,6 @@ public class Record implements Comparable<Record>
 
     @Override
     public int compareTo(@NonNull Record o) {
-        return getMileage() - o.getMileage();
+        return Double.compare(getMileage(), o.getMileage());
     }
 }

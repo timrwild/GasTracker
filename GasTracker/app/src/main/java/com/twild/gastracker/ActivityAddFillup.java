@@ -110,7 +110,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
 
     private boolean submitFillup()
     {
-        int mileage;
+        double mileage;
         double amount;
         double price;
         int full = 0;
@@ -130,7 +130,7 @@ public class ActivityAddFillup extends AppCompatActivity implements DatePickerDi
             return false;
         }
 
-        mileage = Integer.parseInt(mileageString);
+        mileage = Double.parseDouble(mileageString);
         amount = Double.parseDouble(amountString);
 
         if (priceString.equals(""))

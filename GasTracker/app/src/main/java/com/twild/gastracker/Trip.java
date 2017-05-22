@@ -1,22 +1,19 @@
 package com.twild.gastracker;
 
-/**
- * Created by timwildauer on 1/31/17.
- */
 
 public class Trip extends Record
 {
-    int endMileage;
+    double endMileage;
     String info;
 
-    public Trip(int day, int month, int year, int mileage, int endMileage, String info)
+    public Trip(int day, int month, int year, double mileage, double endMileage, String info)
     {
         super(day, month, year, mileage);
         this.endMileage = endMileage;
         this.info = info;
     }
 
-    public int getEndMileage()
+    public double getEndMileage()
     {
         return endMileage;
     }

@@ -171,7 +171,7 @@ public class FragmentFillupInfo extends Fragment
         fillupPrice.clear();
         fillupMPG.clear();
 
-        int mileagePrevious = 0;
+        double mileagePrevious = 0;
         float totalGas = 0;
 
         if (currentCarFillup != null) {
@@ -181,10 +181,10 @@ public class FragmentFillupInfo extends Fragment
                 int tempDateMonth = fillup.getMonth() + 1;
                 int tempDateYear = fillup.getYear();
 
-                int tempMileage = fillup.getMileage();
+                double tempMileage = fillup.getMileage();
                 double tempAmount = fillup.getAmount();
                 int tempFull = fillup.getFull();
-                float tempMPG = 0;
+                double tempMPG = 0;
 
 
                 totalGas += tempAmount;
@@ -203,7 +203,7 @@ public class FragmentFillupInfo extends Fragment
                 fillupMileage.add(NumberFormat.getNumberInstance(Locale.US).format(fillup.getMileage()));
                 fillupAmount.add(String.format("%.3f", fillup.getAmount()));
                 fillupFull.add(String.valueOf(fillup.getFull()));
-                fillupPrice.add(String.valueOf(fillup.getPrice()));
+                fillupPrice.add("$" + String.valueOf(fillup.getPrice()));
                 fillupMPG.add(String.format("%.2f", tempMPG));
             }
         }

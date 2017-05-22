@@ -1,14 +1,11 @@
 package com.twild.gastracker;
 
-/**
- * Created by timwildauer on 1/31/17.
- */
 
 public class Maintenance extends Record
 {
     String type, info;
 
-    public Maintenance(int day, int month, int year, int mileage, String type, String info)
+    public Maintenance(int day, int month, int year, double mileage, String type, String info)
     {
         super(day, month, year, mileage);
         this.type = type;

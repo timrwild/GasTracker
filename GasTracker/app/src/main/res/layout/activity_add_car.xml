@@ -1,76 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<ScrollView android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
 
-
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.4">
-    </LinearLayout>
+        android:weightSum="1">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="500sp"
-        android:layout_weight="0.29">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="1">
+            android:layout_height="90sp"
+            android:layout_weight="0.4"
+            android:orientation="vertical"></LinearLayout>
 
-            <TextView
-                android:text="@string/text_box_car_make"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_car_make"
-                android:layout_weight="0.25"
-                android:paddingRight="7dp"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:layout_weight="0.29"
+            android:orientation="horizontal">
 
-            <TextView
-                android:text="@string/text_box_car_model"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_car_model"
-                android:paddingRight="7dp"
-                android:layout_weight="0.25"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="1">
 
-            <TextView
-                android:text="@string/text_box_car_year"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_car_year"
-                android:ems="10"
-                android:paddingRight="7dp"
-                android:layout_weight="0.25"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+                <TextView
+                    android:id="@+id/text_box_add_car_make"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_car_make"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
-            <TextView
-                android:text="@string/text_box_car_name"
+                <TextView
+                    android:id="@+id/text_box_add_car_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_car_model"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+                <TextView
+                    android:id="@+id/text_box_add_car_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:ems="10"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_car_year"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+                <TextView
+                    android:id="@+id/text_box_add_car_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_car_name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:gravity="center_vertical|end"
-                android:id="@+id/text_box_add_car_name"
-                android:paddingRight="7dp"
-                android:layout_weight="0.25"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edit_text_add_car_make"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="Make"
+                    android:inputType="textPersonName"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_add_car_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="Model"
+                    android:inputType="textPersonName"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_add_car_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="Year"
+                    android:inputType="number"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_add_car_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -78,67 +131,17 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="1">
+            android:layout_weight="0.31">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:inputType="textPersonName"
-                android:ems="4"
-                android:id="@+id/edit_text_add_car_make"
-                android:layout_weight="0.25"
-                android:hint="Make"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
-            <EditText
+            <Button
+                android:text="@string/button_submit_car_text"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:inputType="textPersonName"
-                android:ems="4"
-                android:id="@+id/edit_text_add_car_model"
-                android:layout_weight="0.25"
-                android:hint="Model"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:ems="4"
-                android:id="@+id/edit_text_add_car_year"
-                android:layout_weight="0.25"
-                android:inputType="number"
-                android:hint="Year"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:inputType="textPersonName"
-                android:ems="4"
-                android:id="@+id/edit_text_add_car_name"
-                android:layout_weight="0.25"
-                android:hint="Name"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+                android:layout_height="wrap_content"
+                android:id="@+id/button_submit_car"
+                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.31">
-
-
-        <Button
-            android:text="@string/button_submit_car_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_submit_car"
-            android:layout_gravity="center_horizontal" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

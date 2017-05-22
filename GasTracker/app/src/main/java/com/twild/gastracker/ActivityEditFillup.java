@@ -42,7 +42,7 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
     int year;
     int month;
     int day;
-    int mileage;
+    double mileage;
     double amount;
     double price;
     int full;
@@ -79,7 +79,7 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         editTextPrice = (EditText) findViewById(R.id.edit_text_edit_fillup_price);
         checkBoxFull = (CheckBox) findViewById(R.id.checkbox_edit_fillup_full);
 
-        String stringMileage = Integer.toString(mileage);
+        String stringMileage = Double.toString(mileage);
         String stringAmount = Double.toString(amount);
         String stringPrice = Double.toString(price);
         editTextDate.setText(displayMonth + "/" + day + "/" + year);
