@@ -28,7 +28,9 @@
                 android:value="com.twild.gastracker.ActivityListOfCars" />
         </activity>
         <activity android:name=".ActivityAddFillup" />
-        <activity android:name=".ActivityEditFillup"></activity>
+        <activity android:name=".ActivityEditFillup" />
+        <activity android:name=".ActivityAddMaintenance" />
+        <activity android:name=".ActivityEditMaintenance"></activity>
     </application>
 
 </manifest>

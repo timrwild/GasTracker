@@ -3,13 +3,18 @@ package com.twild.gastracker;
 
 public class Maintenance extends Record
 {
-    String type, info;
+    String type, notes;
 
-    public Maintenance(int day, int month, int year, double mileage, String type, String info)
+    public Maintenance(int day, int month, int year, double mileage, String type, String notes)
     {
         super(day, month, year, mileage);
         this.type = type;
-        this.info = info;
+        this.notes = notes;
+    }
+
+    public Maintenance()
+    {
+
     }
 
     public String getType()
@@ -22,14 +27,14 @@ public class Maintenance extends Record
         this.type = type;
     }
 
-    public String getInfo()
+    public String getNotes()
     {
-        return info;
+        return notes;
     }
 
-    public void setInfo(String info)
+    public void setNotes(String notes)
     {
-        this.info = info;
+        this.notes = notes;
     }
 
 }

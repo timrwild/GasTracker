@@ -92,8 +92,8 @@ public class ActivityListOfCars extends AppCompatActivity implements View.OnClic
     {
 
         /*
-         * Once the lists of all the car ids, names, and info have been updated,
-         * send the contents of the names and info to the list adapter. Set an
+         * Once the lists of all the car ids, names, and notes have been updated,
+         * send the contents of the names and notes to the list adapter. Set an
          * onClick adapter so that when we click on one of the cars in the list,
          * we can receive the index on that list so that we can send that car forward
          * to the next window.
@@ -252,7 +252,7 @@ public class ActivityListOfCars extends AppCompatActivity implements View.OnClic
     {
 
         /*
-         * Clear the array lists of all car ids, names, and info. After that,
+         * Clear the array lists of all car ids, names, and notes. After that,
          * iterate through the list of cars and repopulate the array lists.
          */
 

@@ -39,27 +39,27 @@ public class Car
         Collections.sort(fillUpList);
     }
 
-    public void addMaintenance(int day, int month, int year, double mileage, String type, String info)
+    public void addMaintenance(int day, int month, int year, double mileage, String type, String notes)
     {
-        maintenanceList.add(new Maintenance(day, month, year, mileage, type, info));
+        maintenanceList.add(new Maintenance(day, month, year, mileage, type, notes));
         Collections.sort(maintenanceList);
     }
 
-    public void editMaintenance(int index, int day, int month, int year, double mileage, String type, String info)
+    public void editMaintenance(int index, int day, int month, int year, double mileage, String type, String notes)
     {
-        maintenanceList.set(index, new Maintenance(day, month, year, mileage, type, info));
+        maintenanceList.set(index, new Maintenance(day, month, year, mileage, type, notes));
         Collections.sort(maintenanceList);
     }
 
-    public void addTrip(int day, int month, int year, double mileage, double endMileage, String info)
+    public void addTrip(int day, int month, int year, double mileage, double endMileage, String notes)
     {
-        tripList.add(new Trip(day, month, year, mileage, endMileage, info));
+        tripList.add(new Trip(day, month, year, mileage, endMileage, notes));
         Collections.sort(tripList);
     }
 
-    public void editTrip(int index, int day, int month, int year, double mileage, double endMileage, String info)
+    public void editTrip(int index, int day, int month, int year, double mileage, double endMileage, String notes)
     {
-        tripList.set(index, new Trip(day, month, year, mileage, endMileage, info));
+        tripList.set(index, new Trip(day, month, year, mileage, endMileage, notes));
         Collections.sort(tripList);
     }
 

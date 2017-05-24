@@ -48,9 +48,9 @@ public class ActivityViewCarRecords extends FragmentActivity
             switch(pos)
             {
                 case 0: return FragmentFillupInfo.newInstance(currentCarPosition);
-                case 1: return SecondFragment.newInstance(currentCarPosition);
-                case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
-                default: return ThirdFragment.newInstance("ThirdFragment, Default");
+                case 1: return FragmentMaintenanceInfo.newInstance(currentCarPosition);
+                case 2: return FragmentTripInfo.newInstance("FragmentTripInfo, Instance 1");
+                default: return FragmentTripInfo.newInstance("FragmentTripInfo, Default");
             }
         }
 

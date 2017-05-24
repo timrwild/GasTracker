@@ -55,18 +55,18 @@ public class AdapterFillupList extends ArrayAdapter<String> {
          * layout inflater from the context (the actual activity). I'm not exactly sure
          * what the layout inflater is, but hey, it works, so I'm not going to complain.
          * After that, we need to create a view based on that inflater. The layout we're
-         * inflating is the custom layout for the efficiency info. I'm not sure what the
+         * inflating is the custom layout for the efficiency notes. I'm not sure what the
          * "parent" parameter is for, but I'm guessing that it's telling it where the
          * inflated layouts are going to go. The "false" is there just because it is.
-         * After that view is created, we need to take the info from the arrays at the
+         * After that view is created, we need to take the notes from the arrays at the
          * desired position, and send it to the specific text boxes. Lastly, we return
          * the completely constructed view.
          */
 
 
-        LayoutInflater efficiencyListInflater = LayoutInflater.from(getContext());
+        LayoutInflater fillupListInflater = LayoutInflater.from(getContext());
 
-        View efficiencyListView = efficiencyListInflater.inflate(R.layout.adapter_fillup_info, parent, false);
+        View fillupListView = fillupListInflater.inflate(R.layout.adapter_fillup_info, parent, false);
 
         String date = arrayListDate.get(position);
         String mileage = arrayListMileage.get(position);
@@ -83,12 +83,12 @@ public class AdapterFillupList extends ArrayAdapter<String> {
         String price = arrayListPrice.get(position);
         String mpg = arrayListMPG.get(position);
 
-        TextView textViewDate = (TextView) efficiencyListView.findViewById(R.id.data_table_date);
-        TextView textViewMileage = (TextView) efficiencyListView.findViewById(R.id.data_table_mileage);
-        TextView textViewAmount = (TextView) efficiencyListView.findViewById(R.id.data_table_amount);
-        TextView textViewFull = (TextView) efficiencyListView.findViewById(R.id.data_table_full);
-        TextView textViewPrice = (TextView) efficiencyListView.findViewById(R.id.data_table_price);
-        TextView textViewMPG = (TextView) efficiencyListView.findViewById(R.id.data_table_mpg);
+        TextView textViewDate = (TextView) fillupListView.findViewById(R.id.data_table_fillup_date);
+        TextView textViewMileage = (TextView) fillupListView.findViewById(R.id.data_table_fillup_mileage);
+        TextView textViewAmount = (TextView) fillupListView.findViewById(R.id.data_table_fillup_amount);
+        TextView textViewFull = (TextView) fillupListView.findViewById(R.id.data_table_fillup_full);
+        TextView textViewPrice = (TextView) fillupListView.findViewById(R.id.data_table_fillup_price);
+        TextView textViewMPG = (TextView) fillupListView.findViewById(R.id.data_table_fillup_mpg);
 
         textViewDate.setText(date);
         textViewMileage.setText(mileage);
@@ -97,6 +97,6 @@ public class AdapterFillupList extends ArrayAdapter<String> {
         textViewPrice.setText(price);
         textViewMPG.setText(mpg);
 
-        return efficiencyListView;
+        return fillupListView;
     }
 }

@@ -11,21 +11,21 @@ import android.widget.TextView;
  * Created by Tim Wildauer on 17-May-17.
  */
 
-public class ThirdFragment extends Fragment {
+public class FragmentTripInfo extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.third_frag, container, false);
+        View v = inflater.inflate(R.layout.layout_fragment_trip_info, container, false);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvFragThird);
-        tv.setText(getArguments().getString("msg"));
+        //TextView tv = (TextView) v.findViewById(R.id.tvFragThird);
+        //tv.setText(getArguments().getString("msg"));
 
         return v;
     }
 
-    public static ThirdFragment newInstance(String text) {
+    public static FragmentTripInfo newInstance(String text) {
 
-        ThirdFragment f = new ThirdFragment();
+        FragmentTripInfo f = new FragmentTripInfo();
         Bundle b = new Bundle();
         b.putString("msg", text);
 

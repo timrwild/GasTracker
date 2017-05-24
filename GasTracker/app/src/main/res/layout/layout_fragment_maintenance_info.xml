@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -20,40 +19,28 @@
         >
 
         <TextView
-            android:text="@string/text_box_mileage_view_date"
+            android:text="@string/text_box_maintenance_view_date"
             android:layout_width="0px"
             android:layout_column="0"
             android:layout_weight="0.2" />
 
         <TextView
-            android:text="@string/text_box_mileage_view_mileage"
             android:layout_width="0px"
             android:layout_column="0"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.2"
+            android:text="@string/text_box_maintenance_view_mileage" />
 
         <TextView
-            android:text="@string/text_box_mileage_view_gallons"
             android:layout_width="0px"
             android:layout_column="0"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.2"
+            android:text="@string/text_box_maintenance_view_type" />
 
         <TextView
-            android:text="@string/text_box_mileage_view_full"
             android:layout_width="0px"
             android:layout_column="0"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:text="@string/text_box_mileage_view_price"
-            android:layout_width="0px"
-            android:layout_column="0"
-            android:layout_weight="0.18" />
-
-        <TextView
-            android:text="@string/text_box_mileage_view_mpg"
-            android:layout_width="0px"
-            android:layout_column="0"
-            android:layout_weight="0.12" />
+            android:layout_weight="0.4"
+            android:text="@string/text_box_maintenance_view_notes" />
 
     </TableRow>
 
@@ -68,17 +55,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:id="@+id/fillup_list_view"
-        android:layout_above="@+id/button_add_fillup"
+        android:id="@+id/maintenance_list_view"
+        android:layout_above="@+id/button_add_maintenance"
         android:layout_below="@+id/section_label" />
 
     <Button
-        android:id="@+id/button_add_fillup"
+        android:id="@+id/button_add_maintenance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="@string/add_fillup_record_button_text" />
+        android:text="@string/add_maintenance_record_button_text" />
 
 </RelativeLayout>

@@ -110,7 +110,7 @@ public class FragmentFillupInfo extends Fragment
          * we take those fillups and populate all the arrays of stuff that we want to display.
          */
 
-        populateLists();
+        populateFillupLists();
 
         buttonAddFillup = (Button) viewFillupInfo.findViewById(R.id.button_add_fillup);
         buttonAddFillup.setOnClickListener(new View.OnClickListener()
@@ -148,7 +148,7 @@ public class FragmentFillupInfo extends Fragment
         startActivityForResult(moveToAddFillup, 0);
     }
 
-    public void populateLists()
+    public void populateFillupLists()
     {
 
         /*
@@ -170,8 +170,10 @@ public class FragmentFillupInfo extends Fragment
         double mileagePrevious = 0;
         float totalGas = 0;
 
-        if (fillupList != null) {
-            for (Fillup fillup : fillupList) {
+        if (fillupList != null)
+        {
+            for (Fillup fillup : fillupList)
+            {
 
                 int tempDateDay = fillup.getDay();
                 int tempDateMonth = fillup.getMonth() + 1;
@@ -196,7 +198,7 @@ public class FragmentFillupInfo extends Fragment
 
                 String stringYearSubstring = Integer.toString(tempDateYear).substring(2);
                 fillupDate.add(tempDateMonth + "/" + tempDateDay + "/" + stringYearSubstring);
-                fillupMileage.add(NumberFormat.getNumberInstance(Locale.US).format((int) fillup.getMileage()));
+                fillupMileage.add(NumberFormat.getNumberInstance(Locale.US).format((int) tempMileage));
                 fillupAmount.add(String.format("%.3f", fillup.getAmount()));
                 fillupFull.add(String.valueOf(fillup.getFull()));
                 fillupPrice.add("$" + decimalFormatPrice.format(fillup.getPrice()));
@@ -230,27 +232,30 @@ public class FragmentFillupInfo extends Fragment
     @Override
     public boolean onContextItemSelected(MenuItem item)
     {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int menuItemIndex = item.getItemId();
-        contextMenuFillupPosition = info.position;
-
-        if (menuItemIndex == 0)
+        if (getUserVisibleHint())
         {
-            Log.d("Context Menu", "Selected Edit");
-            Intent editFillup = new Intent(getActivity(), ActivityEditFillup.class);
-            editFillup.putExtra("car_index", currentCarIndex);
-            editFillup.putExtra("fillup_index", contextMenuFillupPosition);
-            startActivityForResult(editFillup, RESULT_OK);
-        }
-        else if (menuItemIndex == 1)
-        {
-            carList.get(currentCarIndex).fillUpList.remove(contextMenuFillupPosition);
-            databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            int menuItemIndex = item.getItemId();
+            contextMenuFillupPosition = info.position;
 
-            populateLists();
-            listViewFillup.setAdapter(listAdapterFillup);
+            if (menuItemIndex == 0)
+            {
+                Log.d("Context Menu", "Selected Edit");
+                Intent editFillup = new Intent(getActivity(), ActivityEditFillup.class);
+                editFillup.putExtra("car_index", currentCarIndex);
+                editFillup.putExtra("fillup_index", contextMenuFillupPosition);
+                startActivityForResult(editFillup, RESULT_OK);
+            } else if (menuItemIndex == 1)
+            {
+                carList.get(currentCarIndex).fillUpList.remove(contextMenuFillupPosition);
+                databaseReference.child(userID).child("" + currentCarIndex).child("fillUpList").setValue(fillupList);
+
+                populateFillupLists();
+                listViewFillup.setAdapter(listAdapterFillup);
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -258,7 +263,7 @@ public class FragmentFillupInfo extends Fragment
     {
         if (resultCode == DATA_CHANGED)
         {
-            populateLists();
+            populateFillupLists();
             listViewFillup.setAdapter(listAdapterFillup);
         }
         super.onActivityResult(requestCode, resultCode, data);

@@ -9,40 +9,29 @@
         android:id="@+id/data_table_header">
 
         <TextView
-            android:id="@+id/data_table_fillup_date"
+            android:id="@+id/data_table_trip_date"
             android:layout_width="0px"
             android:layout_column="0"
             android:layout_weight="0.2" />
 
         <TextView
-            android:id="@+id/data_table_fillup_mileage"
+            android:id="@+id/data_table_trip_begin_mileage"
             android:layout_width="0px"
             android:layout_column="0"
             android:layout_weight="0.2" />
 
         <TextView
-            android:id="@+id/data_table_fillup_amount"
+            android:id="@+id/data_table_trip_end_mileage"
             android:layout_width="0px"
             android:layout_column="0"
             android:layout_weight="0.2" />
 
-        <TextView
-            android:id="@+id/data_table_fillup_full"
-            android:layout_width="0px"
-            android:layout_column="0"
-            android:layout_weight="0.1" />
 
         <TextView
-            android:id="@+id/data_table_fillup_price"
+            android:id="@+id/data_table_trip_notes"
             android:layout_width="0px"
             android:layout_column="0"
-            android:layout_weight="0.15" />
-
-        <TextView
-            android:id="@+id/data_table_fillup_mpg"
-            android:layout_width="0px"
-            android:layout_column="0"
-            android:layout_weight="0.15"
+            android:layout_weight="0.4"
             android:gravity="end" />
 
     </TableRow>
