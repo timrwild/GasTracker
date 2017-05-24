@@ -45,7 +45,6 @@ public class ActivityListOfCars extends AppCompatActivity implements View.OnClic
     static String userID;
 
     static List<Car> carList;
-    public List<CarInfo> carInfoList;
 
     static DatabaseReference databaseReference;
     static FirebaseDatabase firebaseDatabase;

@@ -4,13 +4,18 @@ package com.twild.gastracker;
 public class Trip extends Record
 {
     double endMileage;
-    String info;
+    String notes;
 
     public Trip(int day, int month, int year, double mileage, double endMileage, String info)
     {
         super(day, month, year, mileage);
         this.endMileage = endMileage;
-        this.info = info;
+        this.notes = info;
+    }
+
+    public Trip()
+    {
+
     }
 
     public double getEndMileage()
@@ -23,14 +28,14 @@ public class Trip extends Record
         this.endMileage = endMileage;
     }
 
-    public String getInfo()
+    public String getNotes()
     {
-        return info;
+        return notes;
     }
 
-    public void setInfo(String info)
+    public void setNotes(String notes)
     {
-        this.info = info;
+        this.notes = notes;
     }
 
 }

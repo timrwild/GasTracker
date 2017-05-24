@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="90sp"
+            android:layout_weight="0.4">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240sp"
+            android:layout_weight="0.25"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="1.5">
+
+                <TextView
+                    android:id="@+id/text_box_edit_trip_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_edit_trip_date"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+                <TextView
+                    android:id="@+id/text_box_edit_trip_mileage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_edit_trip_mileage"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+                <TextView
+                    android:id="@+id/text_box_edit_trip_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.25"
+                    android:ems="10"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_edit_trip_end"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+                <TextView
+                    android:id="@+id/text_box_edit_trip_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_weight="0.75"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="7dp"
+                    android:text="@string/text_box_edit_trip_notes"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="1.5">
+
+                <EditText
+                    android:id="@+id/edit_text_edit_trip_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="5"
+                    android:focusable="false"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_edit_trip_mileage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="@string/edit_text_edit_trip_hint_mileage"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_edit_trip_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:ems="4"
+                    android:hint="@string/edit_text_edit_trip_hint_end"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <EditText
+                    android:id="@+id/edit_text_edit_trip_notes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.75"
+                    android:ems="6"
+                    android:hint="@string/edit_text_edit_trip_hint_notes"
+                    android:inputType="textCapCharacters|textCapSentences|textMultiLine"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="90sp"
+            android:layout_weight="0.4">
+
+            <Button
+                android:text="@string/button_edit_trip_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_edit_trip"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

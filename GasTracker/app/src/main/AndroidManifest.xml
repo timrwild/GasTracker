@@ -30,7 +30,9 @@
         <activity android:name=".ActivityAddFillup" />
         <activity android:name=".ActivityEditFillup" />
         <activity android:name=".ActivityAddMaintenance" />
-        <activity android:name=".ActivityEditMaintenance"></activity>
+        <activity android:name=".ActivityEditMaintenance" />
+        <activity android:name=".ActivityAddTrip" />
+        <activity android:name=".ActivityEditTrip"></activity>
     </application>
 
 </manifest>

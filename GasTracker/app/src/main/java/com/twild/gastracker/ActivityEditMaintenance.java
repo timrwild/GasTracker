@@ -45,7 +45,7 @@ public class ActivityEditMaintenance extends AppCompatActivity implements DatePi
     protected void onCreate(Bundle savedInstanceState)
     {
         currentCarIndex = getIntent().getIntExtra("car_index", 0);
-        currentMaintenanceIndex = getIntent().getIntExtra("fillup_index", 0);
+        currentMaintenanceIndex = getIntent().getIntExtra("maintenance_index", 0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_maintenance);
 

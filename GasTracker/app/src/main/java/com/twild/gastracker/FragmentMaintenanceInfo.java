@@ -119,7 +119,17 @@ public class FragmentMaintenanceInfo extends Fragment {
                 maintenanceDate.add(tempDateMonth + "/" + tempDateDay + "/" + stringYearSubstring);
                 maintenanceMileage.add(NumberFormat.getNumberInstance(Locale.US).format((int) tempMileage));
                 maintenanceType.add(tempType);
-                maintenanceNotes.add(tempNotes.substring(0, 12) + "...");
+                if (!tempNotes.equals(""))
+                {
+                    if (tempNotes.length() > 12)
+                    {
+                        maintenanceNotes.add(tempNotes.substring(0, 12) + "...");
+                    }
+                    else
+                    {
+                        maintenanceNotes.add(tempNotes);
+                    }
+                }
 
             }
         }
@@ -150,11 +160,11 @@ public class FragmentMaintenanceInfo extends Fragment {
             {
                 Intent editMaintenance = new Intent(getActivity(), ActivityEditMaintenance.class);
                 editMaintenance.putExtra("car_index", currentCarIndex);
-                editMaintenance.putExtra("fillup_index", contextMenuMaintenancePosition);
+                editMaintenance.putExtra("maintenance_index", contextMenuMaintenancePosition);
                 startActivityForResult(editMaintenance, RESULT_OK);
             } else if (menuItemIndex == 1)
             {
-                carList.get(currentCarIndex).fillUpList.remove(contextMenuMaintenancePosition);
+                carList.get(currentCarIndex).maintenanceList.remove(contextMenuMaintenancePosition);
                 databaseReference.child(userID).child("" + currentCarIndex).child("maintenanceInfo").setValue(maintenanceList);
 
                 populateMaintenanceLists();

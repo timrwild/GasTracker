@@ -67,4 +67,21 @@
     <string name="text_box_edit_maintenance_type">Type:</string>
     <string name="text_box_edit_maintenance_mileage">Mileage:</string>
     <string name="text_box_edit_maintenance_date">Date:</string>
+    <string name="button_submit_trip_text">Add Trip</string>
+    <string name="edit_text_add_trip_hint_notes">Notes</string>
+    <string name="edit_text_add_trip_hint_end">End</string>
+    <string name="edit_text_add_trip_hint_mileage">Begin</string>
+    <string name="text_box_add_trip_notes">Notes:</string>
+    <string name="text_box_add_trip_end">End:</string>
+    <string name="text_box_add_trip_mileage">Begin:</string>
+    <string name="text_box_add_trip_date">Date:</string>
+    <string name="button_edit_trip_text">Confirm Edits</string>
+    <string name="edit_text_edit_trip_hint_notes">Notes</string>
+    <string name="edit_text_edit_trip_hint_end">End</string>
+    <string name="edit_text_edit_trip_hint_mileage">Begin</string>
+    <string name="text_box_edit_trip_notes">Notes:</string>
+    <string name="text_box_edit_trip_end">End:</string>
+    <string name="text_box_edit_trip_mileage">Begin:</string>
+    <string name="text_box_edit_trip_date">Date:</string>
+    <string name="text_box_trip_view_total">Total</string>
 </resources>

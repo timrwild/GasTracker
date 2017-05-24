@@ -14,7 +14,8 @@ import java.util.ArrayList;
  * Created by Tim Wildauer on 23-May-17.
  */
 
-class AdapterMaintenanceList extends ArrayAdapter<String> implements ListAdapter {
+class AdapterMaintenanceList extends ArrayAdapter<String> implements ListAdapter
+{
 
     private ArrayList<String> arrayListDate;
     private ArrayList<String> arrayListMileage;
