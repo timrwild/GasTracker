@@ -3,7 +3,10 @@ package com.twild.gastracker;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -28,6 +31,8 @@ public class ActivityAddMaintenance extends AppCompatActivity implements DatePic
     List<Maintenance> maintenanceList;
 
     EditText editTextDate;
+    AutoCompleteTextView autoCompleteTextViewType;
+    static String[] types = {"Oil", "Filter", "Tires", "Other"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,6 +73,34 @@ public class ActivityAddMaintenance extends AppCompatActivity implements DatePic
             }
         });
         setDateText();
+
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, types);
+        autoCompleteTextViewType = (AutoCompleteTextView) findViewById(R.id.edit_text_add_maintenance_type);
+        autoCompleteTextViewType.setAdapter(typeAdapter);
+        autoCompleteTextViewType.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus)
+            {
+                if (hasFocus)
+                {
+                    autoCompleteTextViewType.showDropDown();
+                }
+                else
+                {
+                    autoCompleteTextViewType.dismissDropDown();
+                }
+            }
+        });
+        autoCompleteTextViewType.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                autoCompleteTextViewType.showDropDown();
+                return false;
+            }
+        });
     }
 
     private void setDateText()
@@ -81,11 +114,11 @@ public class ActivityAddMaintenance extends AppCompatActivity implements DatePic
         double mileage;
 
         EditText editTextMileage = (EditText) findViewById(R.id.edit_text_add_maintenance_mileage);
-        EditText editTextType = (EditText) findViewById(R.id.edit_text_add_maintenance_type);
+        AutoCompleteTextView autoCompleteTextViewtype = (AutoCompleteTextView) findViewById(R.id.edit_text_add_maintenance_type);
         EditText editTextNotes = (EditText) findViewById(R.id.edit_text_add_maintenance_notes);
 
         String mileageString = editTextMileage.getText().toString();
-        String type = editTextType.getText().toString();
+        String type = autoCompleteTextViewtype.getText().toString();
         String notes = editTextNotes.getText().toString();
 
         if (mileageString.equals("") || (type.equals("") && notes.equals("")))

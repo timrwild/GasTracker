@@ -61,7 +61,6 @@ public class ActivityEditFillup extends AppCompatActivity implements DatePickerD
         decimalFormatMileage.setDecimalSeparatorAlwaysShown(false);
 
         mileage = editedFillup.getMileage();
-        Log.d("mileage", "" + mileage);
         amount = editedFillup.getAmount();
         price = editedFillup.getPrice();
         full = editedFillup.getFull();
