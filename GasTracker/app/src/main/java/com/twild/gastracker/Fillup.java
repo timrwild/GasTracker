@@ -14,6 +14,7 @@ public class Fillup extends Record
         this.price = price;
         this.full = full;
     }
+
     public Fillup()
     {
 

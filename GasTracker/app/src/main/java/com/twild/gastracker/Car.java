@@ -1,13 +1,9 @@
 package com.twild.gastracker;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Tim Wildauer on 15-May-17.
- */
 
 public class Car
 {
@@ -16,11 +12,13 @@ public class Car
     List<Maintenance> maintenanceList;
     List<Trip> tripList;
 
-    public Car (String name, String make, String model, String year){
+    public Car (String name, String make, String model, String year)
+    {
         this();
         carInfo = new CarInfo(name, make, model, year);
     }
-    public Car()
+
+    public Car ()
     {
         fillUpList = new ArrayList<>();
         maintenanceList = new ArrayList<>();

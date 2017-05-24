@@ -6,11 +6,11 @@ public class Trip extends Record
     double endMileage;
     String notes;
 
-    public Trip(int day, int month, int year, double mileage, double endMileage, String info)
+    public Trip(int day, int month, int year, double mileage, double endMileage, String notes)
     {
         super(day, month, year, mileage);
         this.endMileage = endMileage;
-        this.notes = info;
+        this.notes = notes;
     }
 
     public Trip()
@@ -33,9 +33,11 @@ public class Trip extends Record
         return notes;
     }
 
+/*
     public void setNotes(String notes)
     {
         this.notes = notes;
     }
+*/
 
 }

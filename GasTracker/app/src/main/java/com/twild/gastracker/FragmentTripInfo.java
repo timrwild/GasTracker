@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -192,11 +191,8 @@ public class FragmentTripInfo extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (resultCode == DATA_CHANGED)
-        {
-            populateTripLists();
-            listViewTrip.setAdapter(listAdapterTrip);
-        }
+        populateTripLists();
+        listViewTrip.setAdapter(listAdapterTrip);
         super.onActivityResult(requestCode, resultCode, data);
     }
 

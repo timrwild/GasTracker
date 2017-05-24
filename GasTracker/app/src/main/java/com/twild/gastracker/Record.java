@@ -22,19 +22,23 @@ public class Record implements Comparable<Record>
 
     }
 
-    public int getDay() {
+    public int getDay()
+    {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(int day)
+    {
         this.day = day;
     }
 
-    public int getMonth() {
+    public int getMonth()
+    {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(int month)
+    {
         this.month = month;
     }
 
@@ -42,20 +46,24 @@ public class Record implements Comparable<Record>
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(int year)
+    {
         this.year = year;
     }
 
-    public double getMileage() {
+    public double getMileage()
+    {
         return mileage;
     }
 
-    public void setMileage(double mileage) {
+    public void setMileage(double mileage)
+    {
         this.mileage = mileage;
     }
 
     @Override
-    public int compareTo(@NonNull Record o) {
+    public int compareTo(@NonNull Record o)
+    {
         return Double.compare(getMileage(), o.getMileage());
     }
 }
