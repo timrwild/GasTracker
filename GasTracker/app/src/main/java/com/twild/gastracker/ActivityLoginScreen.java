@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -31,7 +32,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class ActivityLoginScreen extends AppCompatActivity implements View.OnClickListener {
+public class ActivityLoginScreen extends AppCompatActivity implements View.OnClickListener
+{
 
     private Button buttonOtherGoogleSignIn;
     private SignInButton buttonGoogleSignIn;
@@ -39,10 +41,12 @@ public class ActivityLoginScreen extends AppCompatActivity implements View.OnCli
     private EditText editTextEmailText;
     private EditText editTextPasswordText;
 
+    private TextView textViewRegister;
+
     private ProgressDialog progressDialog;
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    static FirebaseAuth firebaseAuth;
+    static FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     private GoogleApiClient googleApiClient;
 
@@ -61,6 +65,11 @@ public class ActivityLoginScreen extends AppCompatActivity implements View.OnCli
 
         editTextEmailText = (EditText) findViewById(R.id.edit_text_email);
         editTextPasswordText = (EditText) findViewById(R.id.edit_text_password);
+
+        textViewRegister = (TextView) findViewById(R.id.text_view_register);
+        textViewRegister.setOnClickListener(this);
+
+        // set all the buttons and editText views we need
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -136,14 +145,17 @@ public class ActivityLoginScreen extends AppCompatActivity implements View.OnCli
         }
         else if (view == buttonOtherGoogleSignIn)
         {
+            signInEmailPassword();
+        }
+        else if (view == textViewRegister)
+        {
             registerUser();
         }
 
     }
 
-    private void registerUser()
+    private void signInEmailPassword()
     {
-
         /*
          * First, we need to get the text from the boxes the user typed in.
          * After that, we need to make sure that there's actually text in the boxes.
@@ -167,36 +179,32 @@ public class ActivityLoginScreen extends AppCompatActivity implements View.OnCli
          * user that we're registering them.
          */
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Signing in...");
         progressDialog.show();
 
-
-        /*
-         * Start a thing to create the new user, and if it's successful, tell them that
-         * they successfully registered.
-         *
-         *
-         *
-         * ADD ANOTHER WAY TO SIMPLY LOGIN WITH AN EMAIL AND PASSWORD, NOT JUST CREATE AN ACCOUNT
-         * ALSO, ADD ANOTHER PASSWORD BOX TO CONFIRM THE PASSWORD
-         *
-         */
-
-        firebaseAuth.createUserWithEmailAndPassword(textEmail, textPassword)
+        firebaseAuth.signInWithEmailAndPassword(textEmail, textPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                 {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
-                        if (task.isSuccessful())
-                        {
-                            Toast.makeText(ActivityLoginScreen.this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                            progressDialog.hide();
-                        }
+                        progressDialog.dismiss();
 
+                        if (!task.isSuccessful())
+                        {
+                            Toast.makeText(ActivityLoginScreen.this, "Incorrect Email or Password.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
+
     }
+
+    private void registerUser()
+    {
+        Intent registerUser = new Intent(ActivityLoginScreen.this, ActivityRegisterUser.class);
+        startActivity(registerUser);
+    }
+
 
     private void signInGoogle()
     {

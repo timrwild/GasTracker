@@ -32,7 +32,8 @@
         <activity android:name=".ActivityAddMaintenance" />
         <activity android:name=".ActivityEditMaintenance" />
         <activity android:name=".ActivityAddTrip" />
-        <activity android:name=".ActivityEditTrip"></activity>
+        <activity android:name=".ActivityEditTrip" />
+        <activity android:name=".ActivityRegisterUser"></activity>
     </application>
 
 </manifest>

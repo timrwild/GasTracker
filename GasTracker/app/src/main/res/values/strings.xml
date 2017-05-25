@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">GasTracker</string>
-    <string name="text_string_other_login">Login with other Google Account</string>
+    <string name="text_string_other_login">Login with other account</string>
     <string name="text_hint_email">Email</string>
     <string name="text_hint_password">Password</string>
     <string name="text_string_button_sign_in">Sign In</string>
@@ -84,4 +84,11 @@
     <string name="text_box_edit_trip_mileage">Begin:</string>
     <string name="text_box_edit_trip_date">Date:</string>
     <string name="text_box_trip_view_total">Total</string>
+    <string name="text_box_register_email">Email</string>
+    <string name="text_box_register_password">Password</string>
+    <string name="text_box_register_confirm_password">Confirm Password</string>
+    <string name="button_register_user_text">Register</string>
+    <string name="edit_text_register_user_email">Email</string>
+    <string name="edit_text_register_user_confirm_password">Confirm Password</string>
+    <string name="edit_text_register_user_password">Password</string>
 </resources>
