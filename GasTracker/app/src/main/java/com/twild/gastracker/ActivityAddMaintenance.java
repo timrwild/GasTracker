@@ -119,9 +119,14 @@ public class ActivityAddMaintenance extends AppCompatActivity implements DatePic
 
         String mileageString = editTextMileage.getText().toString();
         String type = autoCompleteTextViewtype.getText().toString();
-        String notes = editTextNotes.getText().toString();
+        String notes = editTextNotes.getText().toString().trim();
+        
+        if (notes.equals(""))
+        {
+            notes = " ";
+        }
 
-        if (mileageString.equals("") || (type.equals("") && notes.equals("")))
+        if (mileageString.equals("") || (type.equals(""))
         {
             Toast.makeText(this, "Please enter all information", Toast.LENGTH_SHORT).show();
             return false;
